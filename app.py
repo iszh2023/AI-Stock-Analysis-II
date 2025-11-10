@@ -67,7 +67,7 @@ def validate_stock_symbol(symbol):
         if 'regularMarketPrice' in info or 'currentPrice' in info:
             return True
         return False
-    except:
+    except ValueError:
         return False
 
 def get_stock_data(symbol, period="1y"):
@@ -86,7 +86,7 @@ def get_stock_data(symbol, period="1y"):
             financials = ticker.financials
             balance_sheet = ticker.balance_sheet
             cashflow = ticker.cashflow
-        except:
+        except ValueError:
             financials = pd.DataFrame()
             balance_sheet = pd.DataFrame()
             cashflow = pd.DataFrame()
@@ -394,3 +394,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
